@@ -137,7 +137,7 @@ export function TestimonialsCarouselSection() {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="py-24 px-4 bg-gray-50">
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,8 +146,9 @@ export function TestimonialsCarouselSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">What Our Community Says</h2>
-          <p className="text-xl text-gray-600">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">What Our Community Says</h2>
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-4" />
+          <p className="text-xl text-gray-600 leading-relaxed">
             Trusted by creators and investors worldwide
           </p>
         </motion.div>

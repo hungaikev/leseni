@@ -57,7 +57,7 @@ export function FeaturedDealsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full border-2 hover:border-primary/50 transition-all hover:shadow-lg">
+              <Card className="h-full border-[5px] border-[#D4AF37] hover:border-[#B8941F] transition-all hover:shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl mb-2">{deal.title}</CardTitle>
                   <CardDescription className="text-sm leading-relaxed">

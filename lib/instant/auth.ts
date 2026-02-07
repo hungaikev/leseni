@@ -1,79 +1,58 @@
 /**
  * InstantDB Authentication Helpers
  * 
- * Magic code authentication flow:
- * 1. User enters email
- * 2. System sends magic code to email
- * 3. User enters code
- * 4. User is authenticated
+ * Wrapper functions for InstantDB's magic code authentication.
  */
 
 import { db } from './client';
 
 /**
- * Send magic code to email for sign in/sign up
+ * Send a magic code to the user's email
  */
-export async function sendMagicCode(email: string): Promise<{ success: boolean; error?: string }> {
+export async function sendMagicCode(email: string) {
   try {
-    // Use InstantDB's magic code method
-    const result = await db.auth.sendMagicCode({ email });
-    return { success: result.success || true };
+    await db.auth.sendMagicCode({ email });
+    return { success: true };
   } catch (error) {
     console.error('Error sending magic code:', error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Failed to send magic code',
-    };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to send magic code' };
   }
 }
 
 /**
- * Verify magic code and sign in
+ * Verify a magic code and sign in the user
  */
-export async function verifyMagicCode(
-  email: string,
-  code: string
-): Promise<{ success: boolean; userId?: string; error?: string }> {
+export async function verifyMagicCode(email: string, code: string) {
   try {
-    // Use InstantDB's verify magic code method
     const result = await db.auth.verifyMagicCode({ email, code });
-    if (result.success && result.userId) {
-      return { success: true, userId: result.userId };
-    }
-    return {
-      success: false,
-      error: 'Invalid magic code',
-    };
+    return { success: true, userId: result.userId };
   } catch (error) {
     console.error('Error verifying magic code:', error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Invalid magic code',
-    };
+    return { success: false, error: error instanceof Error ? error.message : 'Invalid magic code' };
   }
 }
 
 /**
- * Get current authenticated user ID
+ * Get the current user ID from the session
  */
 export async function getCurrentUserId(): Promise<string | null> {
   try {
-    // In real InstantDB: return await db.auth.userId()
     return await db.auth.userId();
   } catch (error) {
-    console.error('Error getting current user:', error);
+    console.error('Error getting current user ID:', error);
     return null;
   }
 }
 
 /**
- * Sign out current user
+ * Sign out the current user
  */
-export async function signOut(): Promise<void> {
+export async function signOut() {
   try {
     await db.auth.signOut();
+    return { success: true };
   } catch (error) {
     console.error('Error signing out:', error);
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to sign out' };
   }
 }
-

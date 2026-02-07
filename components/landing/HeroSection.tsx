@@ -19,12 +19,12 @@ export function HeroSection() {
               className="max-w-2xl space-y-8"
             >
               {/* Headline with Gold Accent */}
-              <div className="space-y-4">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+              <div className="space-y-6">
+                <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tight">
                   <span className="text-black">Creating</span>
                   <br />
                   <span className="flex items-center gap-3">
-                    <Music className="w-12 h-12 md:w-16 md:h-16 text-[#D4AF37]" />
+                    <Music className="w-14 h-14 md:w-20 md:h-20 text-[#D4AF37]" />
                     <span className="text-[#D4AF37]">Musical</span>
                   </span>
                   <br />
@@ -32,25 +32,34 @@ export function HeroSection() {
                 </h1>
                 
                 {/* Gold Separator Line */}
-                <div className="w-24 h-1 bg-[#D4AF37] mt-6" />
+                <div className="w-32 h-1.5 bg-[#D4AF37] mt-8" />
               </div>
 
               {/* Description */}
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl font-light">
                 We envision a marketplace that connects creators with investors, 
                 providing debt-free funding for artists while offering investors 
                 access to high-yield royalty assets in an evolving musical landscape.
               </p>
 
-              {/* CTA Button */}
-              <div className="pt-4">
+              {/* CTA Buttons */}
+              <div className="pt-6 flex flex-col sm:flex-row gap-4">
                 <Button
                   asChild
-                  className="rounded-full font-semibold px-8 py-6 h-auto text-base group"
+                  className="rounded-full font-semibold px-8 py-6 h-auto text-base group bg-[#D4AF37] hover:bg-[#B8941F] text-black"
                 >
                   <Link href="/catalog">
                     EXPLORE OUR MARKETPLACE
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="rounded-full font-semibold px-8 py-6 h-auto text-base group border-2 border-black hover:bg-black hover:text-white transition-colors"
+                >
+                  <Link href="/signup">
+                    BOOK A DEMO
                   </Link>
                 </Button>
               </div>

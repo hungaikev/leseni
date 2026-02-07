@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Music } from "lucide-react";
@@ -8,9 +8,24 @@ import { useState } from "react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 50);
+  });
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{ 
+        y: 0,
+        backgroundColor: scrolled ? "rgba(255, 255, 255, 0.98)" : "rgba(255, 255, 255, 0.95)",
+        boxShadow: scrolled ? "0 4px 6px -1px rgba(0, 0, 0, 0.1)" : "none"
+      }}
+      transition={{ duration: 0.2 }}
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-gray-200"
+    >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -35,10 +50,13 @@ export function Header() {
             <Link href="/portfolio" className="text-sm font-medium text-black hover:text-[#D4AF37] transition-colors uppercase tracking-wide">
               Portfolio
             </Link>
+            <Link href="/help" className="text-sm font-medium text-black hover:text-[#D4AF37] transition-colors uppercase tracking-wide">
+              Help
+            </Link>
             <Button asChild variant="ghost" className="text-black hover:text-[#D4AF37]">
               <Link href="/login">Login</Link>
             </Button>
-            <Button asChild className="rounded-full">
+            <Button asChild className="rounded-full bg-[#D4AF37] hover:bg-[#B8941F] text-black">
               <Link href="/signup">Get Started</Link>
             </Button>
           </div>
@@ -65,18 +83,19 @@ export function Header() {
             <Link href="/catalog" className="block text-sm font-medium text-black uppercase">Browse</Link>
             <Link href="/sell" className="block text-sm font-medium text-black uppercase">Sell</Link>
             <Link href="/portfolio" className="block text-sm font-medium text-black uppercase">Portfolio</Link>
+            <Link href="/help" className="block text-sm font-medium text-black uppercase">Help</Link>
             <div className="flex gap-2 pt-2">
               <Button asChild variant="ghost" className="flex-1 text-black">
                 <Link href="/login">Login</Link>
               </Button>
-                <Button asChild className="flex-1 rounded-full">
+                <Button asChild className="flex-1 rounded-full bg-[#D4AF37] hover:bg-[#B8941F] text-black">
                   <Link href="/signup">Sign Up</Link>
                 </Button>
             </div>
           </div>
         </motion.div>
       )}
-    </nav>
+    </motion.nav>
   );
 }
 

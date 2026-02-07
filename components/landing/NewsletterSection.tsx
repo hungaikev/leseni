@@ -54,7 +54,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="py-24 px-4 bg-gray-50">
       <div className="container mx-auto max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,44 @@ export function NewsletterSection() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {mounted ? (
+              {!mounted ? (
+                // SSR fallback - exact same structure
+                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <div className="space-y-2">
+                    <Label htmlFor="newsletter-email" className="text-black">Email</Label>
+                    <Input
+                      id="newsletter-email"
+                      type="email"
+                      placeholder="you@example.com"
+                      disabled
+                      className="bg-white border-gray-300"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="newsletter-interest" className="text-black">I'm primarily interested in...</Label>
+                    <Select value="" disabled>
+                      <SelectTrigger id="newsletter-interest" className="bg-white border-gray-300">
+                        <SelectValue placeholder="Select one..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="investing">Investing</SelectItem>
+                        <SelectItem value="raising">Raising Money</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <Button
+                    type="button"
+                    className="w-full rounded-full"
+                    size="lg"
+                    disabled
+                  >
+                    Sign Up
+                  </Button>
+                  <p className="text-xs text-gray-500 text-center">
+                    By clicking Sign Up you're confirming that you agree with our Terms and Conditions.
+                  </p>
+                </form>
+              ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {error && (
                     <Alert variant="destructive">
@@ -116,7 +153,7 @@ export function NewsletterSection() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-black text-white hover:bg-gray-800 rounded-full"
+                    className="w-full rounded-full"
                     size="lg"
                     disabled={isPending || success || !email || !interest}
                   >
@@ -136,39 +173,6 @@ export function NewsletterSection() {
                     By clicking Sign Up you're confirming that you agree with our Terms and Conditions.
                   </p>
                 </form>
-              ) : (
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="newsletter-email" className="text-black">Email</Label>
-                    <Input
-                      id="newsletter-email"
-                      type="email"
-                      placeholder="you@example.com"
-                      disabled
-                      className="bg-white border-gray-300"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="newsletter-interest" className="text-black">I'm primarily interested in...</Label>
-                    <Select value="" disabled>
-                      <SelectTrigger id="newsletter-interest" className="bg-white border-gray-300">
-                        <SelectValue placeholder="Select one..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="investing">Investing</SelectItem>
-                        <SelectItem value="raising">Raising Money</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <Button
-                    type="button"
-                    className="w-full bg-black text-white rounded-full"
-                    size="lg"
-                    disabled
-                  >
-                    Sign Up
-                  </Button>
-                </div>
               )}
             </CardContent>
           </Card>

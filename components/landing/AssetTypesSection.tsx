@@ -58,7 +58,7 @@ const assetTypes = [
 
 export function AssetTypesSection() {
   return (
-    <section className="py-24 px-4">
+    <section className="py-24 px-4 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,8 +67,9 @@ export function AssetTypesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Asset Types</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">Asset Types</h2>
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-4" />
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Invest in diverse royalty streams across multiple asset classes
           </p>
         </motion.div>
@@ -82,18 +83,40 @@ export function AssetTypesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full border-2 hover:border-primary/50 transition-all hover:shadow-xl group">
-                <CardContent className="p-6">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${asset.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <asset.icon className={`w-8 h-8 ${asset.iconColor}`} />
+              <Card className="h-full border-2 border-gray-200 hover:border-[#D4AF37] transition-all hover:shadow-xl group bg-white relative overflow-hidden cursor-pointer">
+                {/* Sliding Gold Overlay - slides up from bottom */}
+                <div className="absolute inset-0 bg-[#D4AF37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0" 
+                     style={{ transitionDelay: '0.2s' }} />
+                
+                <CardContent className="p-6 relative z-10">
+                  {/* Icon Container - Black bg with gold icon by default, transparent bg with black icon on hover */}
+                  <div className="w-16 h-16 rounded-2xl bg-black flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-transparent transition-all duration-500"
+                       style={{ transitionDelay: '0.2s' }}>
+                    <asset.icon className="w-8 h-8 text-[#D4AF37] group-hover:text-black transition-colors duration-500"
+                                style={{ transitionDelay: '0.2s' }} />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{asset.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  
+                  {/* Title */}
+                  <h3 className="text-xl font-bold mb-2 text-black group-hover:text-black transition-colors duration-500"
+                      style={{ transitionDelay: '0.2s' }}>
+                    {asset.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed group-hover:text-black/90 transition-colors duration-500"
+                     style={{ transitionDelay: '0.2s' }}>
                     {asset.description}
                   </p>
+                  
+                  {/* Badges */}
                   <div className="flex flex-wrap gap-2">
                     {asset.examples.map((example, i) => (
-                      <Badge key={i} variant="secondary" className="text-xs">
+                      <Badge 
+                        key={i} 
+                        variant="secondary" 
+                        className="text-xs bg-gray-100 text-gray-700 group-hover:bg-black/20 group-hover:text-black border-0 group-hover:border-black/30 transition-all duration-500"
+                        style={{ transitionDelay: `${0.2 + (i * 0.05)}s` }}
+                      >
                         {example}
                       </Badge>
                     ))}

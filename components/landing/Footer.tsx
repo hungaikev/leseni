@@ -51,6 +51,11 @@ export function Footer() {
                   Portfolio
                 </Link>
               </li>
+              <li>
+                <Link href="/help" className="text-gray-600 hover:text-[#D4AF37] transition-colors">
+                  Help
+                </Link>
+              </li>
             </ul>
           </div>
 
