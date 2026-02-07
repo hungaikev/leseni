@@ -63,7 +63,7 @@ export default function SellPage() {
               </div>
               <Button
                 onClick={() => setStep(2)}
-                className="w-full bg-black text-white hover:bg-gray-800 rounded-full"
+                className="w-full rounded-full"
                 size="lg"
               >
                 Continue
@@ -100,13 +100,13 @@ export default function SellPage() {
                 <Button
                   variant="outline"
                   onClick={() => setStep(1)}
-                  className="flex-1 border-gray-300 text-black hover:bg-gray-100 rounded-full"
+                  className="flex-1 rounded-full"
                 >
                   Back
                 </Button>
                 <Button
                   onClick={() => setStep(3)}
-                  className="flex-1 bg-black text-white hover:bg-gray-800 rounded-full"
+                  className="flex-1 rounded-full"
                   size="lg"
                 >
                   Continue
@@ -156,12 +156,12 @@ export default function SellPage() {
                 <Button
                   variant="outline"
                   onClick={() => setStep(2)}
-                  className="flex-1 border-gray-300 text-black hover:bg-gray-100 rounded-full"
+                  className="flex-1 rounded-full"
                 >
                   Back
                 </Button>
                 <Button
-                  className="flex-1 bg-[#D4AF37] text-black hover:bg-[#B8941F] rounded-full"
+                  className="flex-1 rounded-full"
                   size="lg"
                 >
                   Submit for Review
@@ -180,10 +180,10 @@ export default function SellPage() {
           Our team is here to assist you through the listing process. Get a free estimate or speak with an advisor.
         </p>
         <div className="flex gap-4">
-          <Button asChild variant="outline" className="border-gray-300 text-black hover:bg-gray-100 rounded-full">
+          <Button asChild variant="outline" className="rounded-full">
             <Link href="/contact">Contact Support</Link>
           </Button>
-          <Button asChild className="bg-black text-white hover:bg-gray-800 rounded-full">
+          <Button asChild className="rounded-full">
             <Link href="/estimate">Get Free Estimate</Link>
           </Button>
         </div>

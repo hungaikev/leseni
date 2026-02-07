@@ -129,7 +129,7 @@ export default function PortfolioPage() {
             <Card className="border-2 border-gray-200 bg-white">
               <CardContent className="p-12 text-center">
                 <p className="text-gray-600 mb-4">You don't have any positions yet.</p>
-                <Button asChild className="bg-black text-white hover:bg-gray-800 rounded-full">
+                <Button asChild className="rounded-full">
                   <Link href="/catalog">
                     Browse Catalogs
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -178,7 +178,7 @@ export default function PortfolioPage() {
                     </div>
                   </div>
                   <div className="mt-6 pt-6 border-t border-gray-200">
-                    <Button asChild variant="outline" className="border-gray-300 text-black hover:bg-gray-100 rounded-full">
+                    <Button asChild variant="outline" className="rounded-full">
                       <Link href={`/catalog/${position.id}`}>
                         View Details
                         <ArrowRight className="ml-2 w-4 h-4" />

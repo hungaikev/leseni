@@ -34,7 +34,7 @@ export function MarketplaceSection() {
             <Button
               asChild
               size="lg"
-              className="text-lg px-8 py-6 h-auto rounded-full bg-black text-white hover:bg-gray-800"
+              className="text-lg px-8 py-6 h-auto rounded-full"
             >
               <Link href="/catalog">
                 Go To The Marketplace

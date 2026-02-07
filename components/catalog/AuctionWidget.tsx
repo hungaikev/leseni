@@ -146,7 +146,7 @@ export function AuctionWidget({ listing, catalog, bids }: AuctionWidgetProps) {
         {!isAuction && listing.buyNowPrice && isActive && (
           <Button
             onClick={handleBuyNow}
-            className="w-full bg-[#D4AF37] text-black hover:bg-[#B8941F] rounded-full"
+            className="w-full rounded-full"
             size="lg"
             disabled={isPending}
           >
@@ -183,7 +183,7 @@ export function AuctionWidget({ listing, catalog, bids }: AuctionWidgetProps) {
 
             <Button
               onClick={handlePlaceBid}
-              className="w-full bg-black text-white hover:bg-gray-800 rounded-full"
+              className="w-full rounded-full"
               size="lg"
               disabled={isPending || !bidAmount}
             >

@@ -38,7 +38,7 @@ export function Header() {
             <Button asChild variant="ghost" className="text-black hover:text-[#D4AF37]">
               <Link href="/login">Login</Link>
             </Button>
-            <Button asChild className="bg-black text-white hover:bg-gray-800 rounded-full">
+            <Button asChild className="rounded-full">
               <Link href="/signup">Get Started</Link>
             </Button>
           </div>
@@ -69,9 +69,9 @@ export function Header() {
               <Button asChild variant="ghost" className="flex-1 text-black">
                 <Link href="/login">Login</Link>
               </Button>
-              <Button asChild className="flex-1 bg-black text-white rounded-full">
-                <Link href="/signup">Sign Up</Link>
-              </Button>
+                <Button asChild className="flex-1 rounded-full">
+                  <Link href="/signup">Sign Up</Link>
+                </Button>
             </div>
           </div>
         </motion.div>

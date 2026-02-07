@@ -69,7 +69,7 @@ export function WhatWeDoSection() {
                     </li>
                   ))}
                 </ul>
-                <Button asChild className="w-full bg-black text-white hover:bg-gray-800 rounded-full mt-8" size="lg">
+                <Button asChild className="w-full rounded-full mt-8" size="lg">
                   <Link href="/sell">
                     Get a Free Estimate
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -107,7 +107,7 @@ export function WhatWeDoSection() {
                     </li>
                   ))}
                 </ul>
-                <Button asChild variant="outline" className="w-full border-2 border-black text-black hover:bg-black hover:text-white rounded-full mt-8" size="lg">
+                <Button asChild variant="outline" className="w-full rounded-full mt-8" size="lg">
                   <Link href="/signup">
                     Start Investing
                     <ArrowRight className="ml-2 w-4 h-4" />

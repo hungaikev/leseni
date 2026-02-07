@@ -75,7 +75,7 @@ export function CatalogFilters() {
 
         <Button
           variant="outline"
-          className="w-full border-gray-300 text-black hover:bg-gray-100 rounded-full"
+          className="w-full rounded-full"
           onClick={() => router.push("/catalog")}
         >
           Clear Filters

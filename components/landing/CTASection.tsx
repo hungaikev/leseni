@@ -27,7 +27,7 @@ export function CTASection() {
             <Button
               asChild
               size="lg"
-              className="text-lg px-8 py-6 h-auto rounded-full bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold group"
+              className="text-lg px-8 py-6 h-auto rounded-full font-semibold group"
             >
               <Link href="/signup">
                 Create Account

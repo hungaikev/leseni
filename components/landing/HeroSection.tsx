@@ -46,7 +46,7 @@ export function HeroSection() {
               <div className="pt-4">
                 <Button
                   asChild
-                  className="rounded-full bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-6 h-auto text-base group"
+                  className="rounded-full font-semibold px-8 py-6 h-auto text-base group"
                 >
                   <Link href="/catalog">
                     EXPLORE OUR MARKETPLACE
