@@ -7,9 +7,14 @@
 
 import { HeroSection } from "@/components/landing/HeroSection";
 import { TrustSection } from "@/components/landing/TrustSection";
+import { LiveActivitySection } from "@/components/landing/LiveActivitySection";
+import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
 import { WhatWeDoSection } from "@/components/landing/WhatWeDoSection";
-import { MarketplaceSection } from "@/components/landing/MarketplaceSection";
+import { AssetTypesSection } from "@/components/landing/AssetTypesSection";
 import { FeaturedDealsSection } from "@/components/landing/FeaturedDealsSection";
+import { SuccessStoriesSection } from "@/components/landing/SuccessStoriesSection";
+import { TestimonialsCarouselSection } from "@/components/landing/TestimonialsCarouselSection";
+import { MarketplaceSection } from "@/components/landing/MarketplaceSection";
 import { NewsletterSection } from "@/components/landing/NewsletterSection";
 import { CTASection } from "@/components/landing/CTASection";
 import { Footer } from "@/components/landing/Footer";
@@ -23,14 +28,29 @@ export default function LandingPage() {
       {/* Trust Indicators - Stats & Press */}
       <TrustSection />
 
+      {/* Live Activity Feed */}
+      <LiveActivitySection />
+
+      {/* How It Works - Step by Step */}
+      <HowItWorksSection />
+
       {/* What We Do - Two-sided Marketplace */}
       <WhatWeDoSection />
 
-      {/* The Marketplace Section */}
-      <MarketplaceSection />
+      {/* Asset Types Showcase */}
+      <AssetTypesSection />
 
       {/* Featured Deals */}
       <FeaturedDealsSection />
+
+      {/* Success Stories */}
+      <SuccessStoriesSection />
+
+      {/* Testimonials Carousel */}
+      <TestimonialsCarouselSection />
+
+      {/* The Marketplace Section */}
+      <MarketplaceSection />
 
       {/* Newsletter Signup */}
       <NewsletterSection />
