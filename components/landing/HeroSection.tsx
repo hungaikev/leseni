@@ -2,107 +2,121 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight, Music } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          {/* Left Column - Main Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                The World's Premier
-                <br />
-                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  Royalty Marketplace
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-2">
-                Debt-free funding for creators.
-              </p>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-2">
-                Financial Security. Artistic Freedom.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="text-lg px-8 py-6 h-auto group">
-                <Link href="/sell">
-                  Get a Catalog Deal Estimate
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 h-auto border-2">
-                <Link href="/catalog">
-                  Get access to royalty assets
-                  <TrendingUp className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Featured Listing Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Card className="border-2 shadow-2xl hover:shadow-primary/10 transition-shadow">
-              <CardContent className="p-0">
-                {/* Featured Badge */}
-                <div className="bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold">
-                  Live Now!
-                </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+      <div className="w-full h-full">
+        <div className="grid lg:grid-cols-2 h-screen">
+          {/* Left Column - Content */}
+          <div className="flex items-center justify-center p-8 lg:p-16 bg-white">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl space-y-8"
+            >
+              {/* Headline with Gold Accent */}
+              <div className="space-y-4">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+                  <span className="text-black">Creating</span>
+                  <br />
+                  <span className="flex items-center gap-3">
+                    <Music className="w-12 h-12 md:w-16 md:h-16 text-[#D4AF37]" />
+                    <span className="text-[#D4AF37]">Musical</span>
+                  </span>
+                  <br />
+                  <span className="text-black">Wealth</span>
+                </h1>
                 
-                <div className="p-6 space-y-4">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      Music From Award-Winning Film Franchise
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      This asset earns from music written for award-winning film franchises. 
-                      The catalog generates royalties when the films air on TV, are streamed online, 
-                      and when this music plays in soundtracks and theme park experiences.
-                    </p>
+                {/* Gold Separator Line */}
+                <div className="w-24 h-1 bg-[#D4AF37] mt-6" />
+              </div>
+
+              {/* Description */}
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+                We envision a marketplace that connects creators with investors, 
+                providing debt-free funding for artists while offering investors 
+                access to high-yield royalty assets in an evolving musical landscape.
+              </p>
+
+              {/* CTA Button */}
+              <div className="pt-4">
+                <Button
+                  asChild
+                  className="rounded-full bg-[#D4AF37] hover:bg-[#B8941F] text-black font-semibold px-8 py-6 h-auto text-base group"
+                >
+                  <Link href="/catalog">
+                    EXPLORE OUR MARKETPLACE
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Visual with Gold Accent */}
+          <div className="relative bg-black overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute inset-0" style={{
+                backgroundImage: `repeating-linear-gradient(
+                  45deg,
+                  transparent,
+                  transparent 10px,
+                  rgba(212, 175, 55, 0.1) 10px,
+                  rgba(212, 175, 55, 0.1) 20px
+                )`
+              }} />
+            </div>
+
+            {/* Main Visual Element */}
+            <div className="relative h-full flex items-center justify-center p-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="relative"
+              >
+                {/* Gold Accent Element - Music Note or Instrument */}
+                <div className="relative">
+                  {/* Decorative Gold Circle */}
+                  <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#D4AF37] opacity-20 blur-3xl" />
+                  
+                  {/* Main Gold Element */}
+                  <div className="relative z-10">
+                    <Music className="w-64 h-64 md:w-80 md:h-80 text-[#D4AF37]" strokeWidth={1.5} />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                    <div>
-                      <div className="text-xs text-muted-foreground mb-1">LTM</div>
-                      <div className="text-2xl font-bold">$235,003</div>
-                    </div>
-                    <div>
-                      <div className="text-xs text-muted-foreground mb-1">List Price</div>
-                      <div className="text-2xl font-bold">$2,300,000</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-2">
-                    <div className="flex items-center gap-2">
-                      <Badge variant="secondary">Monthly</Badge>
-                      <Badge variant="default">Live Now</Badge>
-                    </div>
-                    <Button asChild variant="outline" size="sm">
-                      <Link href="/catalog">
-                        See the Details
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Link>
-                    </Button>
-                  </div>
+                  {/* Floating Elements */}
+                  <motion.div
+                    animate={{ y: [0, -20, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="absolute top-10 left-10 w-16 h-16 rounded-full bg-[#D4AF37] opacity-30 blur-xl"
+                  />
+                  <motion.div
+                    animate={{ y: [0, 20, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                    className="absolute bottom-10 right-10 w-20 h-20 rounded-full bg-[#D4AF37] opacity-20 blur-xl"
+                  />
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Curved Bottom Edge */}
+            <div className="absolute bottom-0 left-0 right-0">
+              <svg
+                viewBox="0 0 1200 120"
+                fill="white"
+                className="w-full h-24 md:h-32"
+                preserveAspectRatio="none"
+              >
+                <path d="M0,120 Q300,60 600,80 T1200,100 L1200,120 Z" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>

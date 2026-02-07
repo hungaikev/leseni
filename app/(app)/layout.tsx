@@ -1,6 +1,9 @@
 /**
- * App Layout - Main application shell
+ * App Layout - Main application shell with consistent header and footer
  */
+
+import { Header } from "@/components/layout/Header";
+import { AppFooter } from "@/components/layout/AppFooter";
 
 export default function AppLayout({
   children,
@@ -8,26 +11,12 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <a href="/" className="text-xl font-bold">
-              Leseni
-            </a>
-            <div className="flex gap-4">
-              <a href="/catalog" className="text-sm hover:underline">
-                Browse
-              </a>
-              <a href="/portfolio" className="text-sm hover:underline">
-                Portfolio
-              </a>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <main>{children}</main>
+    <div className="min-h-screen bg-white flex flex-col">
+      <Header />
+      <main className="flex-1 pt-20">
+        {children}
+      </main>
+      <AppFooter />
     </div>
   );
 }
-

@@ -60,22 +60,23 @@ const investorSteps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-background to-muted/20">
+    <section className="py-24 px-4 bg-white">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">How It Works</h2>
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-4" />
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             A simple, transparent process for both creators and investors
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-16 mb-16">
           {/* Creator Flow */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -84,8 +85,8 @@ export function HowItWorksSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-2">For Creators</h3>
-              <p className="text-muted-foreground">Sell your royalty streams in 4 simple steps</p>
+              <h3 className="text-3xl font-bold mb-2 text-black">For Creators</h3>
+              <p className="text-gray-600">Sell your royalty streams in 4 simple steps</p>
             </div>
             <div className="space-y-6">
               {creatorSteps.map((step, index) => (
@@ -96,20 +97,20 @@ export function HowItWorksSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="border-2 hover:border-primary/50 transition-all">
+                  <Card className="border-2 border-gray-200 hover:border-[#D4AF37] transition-all bg-white">
                     <CardContent className="p-6">
                       <div className="flex gap-4">
                         <div className="flex-shrink-0">
-                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                            <step.icon className="w-6 h-6 text-primary" />
+                          <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                            <step.icon className="w-7 h-7 text-[#D4AF37]" />
                           </div>
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="text-xs font-bold text-primary">STEP {step.step}</span>
+                            <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wide">STEP {step.step}</span>
                           </div>
-                          <h4 className="text-lg font-bold mb-1">{step.title}</h4>
-                          <p className="text-sm text-muted-foreground">{step.description}</p>
+                          <h4 className="text-lg font-bold mb-1 text-black">{step.title}</h4>
+                          <p className="text-sm text-gray-600">{step.description}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -127,8 +128,8 @@ export function HowItWorksSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-2">For Investors</h3>
-              <p className="text-muted-foreground">Start investing in royalties in 4 simple steps</p>
+              <h3 className="text-3xl font-bold mb-2 text-black">For Investors</h3>
+              <p className="text-gray-600">Start investing in royalties in 4 simple steps</p>
             </div>
             <div className="space-y-6">
               {investorSteps.map((step, index) => (
@@ -139,20 +140,20 @@ export function HowItWorksSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="border-2 hover:border-emerald-500/50 transition-all">
+                  <Card className="border-2 border-gray-200 hover:border-[#D4AF37] transition-all bg-white">
                     <CardContent className="p-6">
                       <div className="flex gap-4">
                         <div className="flex-shrink-0">
-                          <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                            <step.icon className="w-6 h-6 text-emerald-500" />
+                          <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                            <step.icon className="w-7 h-7 text-[#D4AF37]" />
                           </div>
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="text-xs font-bold text-emerald-500">STEP {step.step}</span>
+                            <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wide">STEP {step.step}</span>
                           </div>
-                          <h4 className="text-lg font-bold mb-1">{step.title}</h4>
-                          <p className="text-sm text-muted-foreground">{step.description}</p>
+                          <h4 className="text-lg font-bold mb-1 text-black">{step.title}</h4>
+                          <p className="text-sm text-gray-600">{step.description}</p>
                         </div>
                       </div>
                     </CardContent>

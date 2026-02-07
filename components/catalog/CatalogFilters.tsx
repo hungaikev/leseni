@@ -7,7 +7,6 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export function CatalogFilters() {
@@ -25,16 +24,16 @@ export function CatalogFilters() {
   };
 
   return (
-    <Card>
+    <Card className="border-2 border-gray-200 bg-white sticky top-24">
       <CardHeader>
-        <CardTitle>Filters</CardTitle>
+        <CardTitle className="text-black">Filters</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         <div>
-          <Label htmlFor="type">Type</Label>
+          <Label htmlFor="type" className="text-black mb-2 block">Type</Label>
           <select
             id="type"
-            className="w-full mt-1 h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+            className="w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none"
             value={searchParams.get("type") || ""}
             onChange={(e) => handleFilter("type", e.target.value)}
           >
@@ -46,10 +45,24 @@ export function CatalogFilters() {
         </div>
 
         <div>
-          <Label htmlFor="sort">Sort By</Label>
+          <Label htmlFor="termType" className="text-black mb-2 block">Term Type</Label>
+          <select
+            id="termType"
+            className="w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none"
+            value={searchParams.get("termType") || ""}
+            onChange={(e) => handleFilter("termType", e.target.value)}
+          >
+            <option value="">All Terms</option>
+            <option value="TERM">Term</option>
+            <option value="PERPETUAL">Perpetual</option>
+          </select>
+        </div>
+
+        <div>
+          <Label htmlFor="sort" className="text-black mb-2 block">Sort By</Label>
           <select
             id="sort"
-            className="w-full mt-1 h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+            className="w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none"
             value={searchParams.get("sort") || "newest"}
             onChange={(e) => handleFilter("sort", e.target.value)}
           >
@@ -62,7 +75,7 @@ export function CatalogFilters() {
 
         <Button
           variant="outline"
-          className="w-full"
+          className="w-full border-gray-300 text-black hover:bg-gray-100 rounded-full"
           onClick={() => router.push("/catalog")}
         >
           Clear Filters
@@ -71,4 +84,3 @@ export function CatalogFilters() {
     </Card>
   );
 }
-

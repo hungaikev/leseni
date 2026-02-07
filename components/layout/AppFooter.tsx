@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { Music, Twitter, Linkedin, Github } from "lucide-react";
 
-export function Footer() {
+export function AppFooter() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
+    <footer className="border-t border-gray-200 bg-white mt-auto">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -106,3 +106,4 @@ export function Footer() {
     </footer>
   );
 }
+
