@@ -58,10 +58,8 @@ export default function SignupPage() {
     setError(null);
     startTransition(async () => {
       const result = await verifyMagicCode(email, code);
-      if (result.success && result.userId) {
-        // Create user profile (in real app, this would be done via InstantDB)
-        // For now, just redirect
-        router.push("/catalog");
+      if (result.success) {
+        router.push("/dashboard");
       } else {
         setError(result.error || "Invalid code. Please try again.");
       }
@@ -242,4 +240,3 @@ export default function SignupPage() {
     </div>
   );
 }
-

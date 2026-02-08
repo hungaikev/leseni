@@ -53,9 +53,8 @@ export default function LoginPage() {
     setError(null);
     startTransition(async () => {
       const result = await verifyMagicCode(email, code);
-      if (result.success && result.userId) {
-        // Redirect to dashboard/catalog
-        router.push("/catalog");
+      if (result.success) {
+        router.push("/dashboard");
       } else {
         setError(result.error || "Invalid code. Please try again.");
       }
@@ -219,4 +218,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

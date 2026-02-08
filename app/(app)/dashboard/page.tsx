@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { db } from "@/lib/instant/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +32,14 @@ type PositionRow = {
 };
 
 export default function DashboardPage() {
+  const { isLoading, user } = db.useAuth();
+  const { data: usersData } = db.useQuery({
+    users: {
+      $: {
+        where: user ? { id: user.id } : {},
+      },
+    },
+  });
   const [role, setRole] = useState<Role>("GUEST");
   const [activeTab, setActiveTab] = useState<string>("overview");
   const [positions, setPositions] = useState<PositionRow[]>([]);
@@ -43,8 +52,20 @@ export default function DashboardPage() {
   useEffect(() => {
     let mounted = true;
     if (mounted) {
-      setRole("INVESTOR");
-      setActiveTab("portfolio");
+      const profile = usersData?.users?.[0];
+      const roles: string[] | undefined = profile?.roles;
+      if (user) {
+        const r: Role = roles?.includes("ADMIN")
+          ? "ADMIN"
+          : roles?.includes("CREATOR")
+          ? "CREATOR"
+          : "INVESTOR";
+        setRole(r);
+        setActiveTab(r === "ADMIN" ? "approvals" : r === "CREATOR" ? "listings" : "portfolio");
+      } else {
+        setRole("GUEST");
+        setActiveTab("overview");
+      }
       setPositions([]);
       setOverviewKpis({ totalInvested: 0, positionsCount: 0, portfolioValue: 0, realizedReturns: 0 });
       setChartData([
@@ -64,7 +85,7 @@ export default function DashboardPage() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [user, usersData]);
 
   const tabs = useMemo(
     () => [
@@ -87,6 +108,13 @@ export default function DashboardPage() {
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl font-bold mb-2 text-black">Dashboard</h1>
         <p className="text-gray-600">Role: {role}</p>
+        {role === "GUEST" && (
+          <div className="mt-3">
+            <Button asChild>
+              <Link href="/login">Sign in</Link>
+            </Button>
+          </div>
+        )}
       </div>
 
       <div className="flex gap-3 mb-8 border-b border-gray-200">

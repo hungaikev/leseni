@@ -20,12 +20,12 @@ export async function sendMagicCode(email: string) {
 }
 
 /**
- * Verify a magic code and sign in the user
+ * Verify a magic code and sign in the user (client-side)
  */
 export async function verifyMagicCode(email: string, code: string) {
   try {
-    const result = await db.auth.verifyMagicCode({ email, code });
-    return { success: true, userId: result.userId };
+    await db.auth.signInWithMagicCode({ email, code });
+    return { success: true, userId: null };
   } catch (error) {
     console.error('Error verifying magic code:', error);
     return { success: false, error: error instanceof Error ? error.message : 'Invalid magic code' };
@@ -37,7 +37,7 @@ export async function verifyMagicCode(email: string, code: string) {
  */
 export async function getCurrentUserId(): Promise<string | null> {
   try {
-    return await db.auth.userId();
+    return null;
   } catch (error) {
     console.error('Error getting current user ID:', error);
     return null;
