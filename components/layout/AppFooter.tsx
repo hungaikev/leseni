@@ -98,12 +98,7 @@ export function AppFooter() {
             </ul>
           </div>
         </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
-          <p>© {new Date().getFullYear()} Leseni. All rights reserved.</p>
-        </div>
       </div>
     </footer>
   );
 }
-

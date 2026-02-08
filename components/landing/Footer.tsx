@@ -51,11 +51,6 @@ export function Footer() {
                   Portfolio
                 </Link>
               </li>
-              <li>
-                <Link href="/help" className="text-gray-600 hover:text-[#D4AF37] transition-colors">
-                  Help
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -102,10 +97,6 @@ export function Footer() {
               </li>
             </ul>
           </div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
-          <p>© {new Date().getFullYear()} Leseni. All rights reserved.</p>
         </div>
       </div>
     </footer>
