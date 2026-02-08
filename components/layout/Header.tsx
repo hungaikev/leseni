@@ -50,9 +50,6 @@ export function Header() {
             <Link href="/portfolio" className="text-sm font-medium text-black hover:text-[#D4AF37] transition-colors uppercase tracking-wide">
               Portfolio
             </Link>
-            <Link href="/help" className="text-sm font-medium text-black hover:text-[#D4AF37] transition-colors uppercase tracking-wide">
-              Help
-            </Link>
             <Button asChild variant="ghost" className="text-black hover:text-[#D4AF37]">
               <Link href="/login">Login</Link>
             </Button>
@@ -83,7 +80,6 @@ export function Header() {
             <Link href="/catalog" className="block text-sm font-medium text-black uppercase">Browse</Link>
             <Link href="/sell" className="block text-sm font-medium text-black uppercase">Sell</Link>
             <Link href="/portfolio" className="block text-sm font-medium text-black uppercase">Portfolio</Link>
-            <Link href="/help" className="block text-sm font-medium text-black uppercase">Help</Link>
             <div className="flex gap-2 pt-2">
               <Button asChild variant="ghost" className="flex-1 text-black">
                 <Link href="/login">Login</Link>
@@ -98,4 +94,3 @@ export function Header() {
     </motion.nav>
   );
 }
-

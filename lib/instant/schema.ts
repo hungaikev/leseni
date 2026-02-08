@@ -5,9 +5,7 @@
  * InstantDB uses a schema-first approach with TypeScript types.
  */
 
-import { type Schema } from '@instantdb/react';
-
-export const schema: Schema = {
+export const schema = {
   users: {
     email: { type: 'string' },
     name: { type: 'string' },
@@ -94,6 +92,7 @@ export const schema: Schema = {
     payoutDate: { type: 'number', optional: true },
     createdAt: { type: 'number' },
   },
+  links: {},
 };
 
 /**
@@ -134,4 +133,3 @@ export const schema: Schema = {
  * - Users can read their own investorCashflows
  * - System can create investorCashflows (via server actions)
  */
-

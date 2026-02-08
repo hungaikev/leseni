@@ -70,7 +70,7 @@ export function WhatWeDoSection() {
                   ))}
                 </ul>
                 <Button asChild className="w-full rounded-full mt-8" size="lg">
-                  <Link href="/sell">
+                  <Link href="/estimate">
                     Get a Free Estimate
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
