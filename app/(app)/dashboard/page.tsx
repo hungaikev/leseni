@@ -16,6 +16,10 @@ import {
   Tooltip,
   BarChart,
   Bar,
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
 } from "recharts";
  
 
@@ -102,6 +106,27 @@ export default function DashboardPage() {
   );
 
   const visibleTabs = tabs.filter((t) => !t.allowed || t.allowed.includes(role));
+
+  const COLORS = ["#D4AF37", "#A0522D", "#696969", "#808080"];
+
+  const dspData = [
+    { name: "Spotify", value: 400 },
+    { name: "Apple Music", value: 300 },
+    { name: "Amazon Music", value: 200 },
+    { name: "YouTube Music", value: 100 },
+  ];
+
+  const locationData = [
+    { name: "United States", value: 250 },
+    { name: "United Kingdom", value: 150 },
+    { name: "Canada", value: 100 },
+    { name: "Australia", value: 50 },
+  ];
+
+  const genderData = [
+    { name: "Male", value: 450 },
+    { name: "Female", value: 550 },
+  ];
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl">
@@ -410,22 +435,81 @@ export default function DashboardPage() {
       )}
 
       {activeTab === "analytics" && (
-        <Card className="border-2 border-gray-200">
-          <CardHeader>
-            <CardTitle className="text-black">Analytics</CardTitle>
-            <CardDescription className="text-gray-600">Overview</CardDescription>
-          </CardHeader>
-          <CardContent className="h-72">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <XAxis dataKey="period" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="value" fill="#D4AF37" />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <div className="space-y-8">
+          <Card className="border-2 border-gray-200">
+            <CardHeader>
+              <CardTitle className="text-black">Performance</CardTitle>
+              <CardDescription className="text-gray-600">Recent trend</CardDescription>
+            </CardHeader>
+            <CardContent className="h-72">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData}>
+                  <XAxis dataKey="period" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="value" fill="#D4AF37" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="border-2 border-gray-200">
+              <CardHeader>
+                <CardTitle className="text-black">DSP Demographics</CardTitle>
+              </CardHeader>
+              <CardContent className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={dspData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label>
+                      {dspData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+            <Card className="border-2 border-gray-200">
+              <CardHeader>
+                <CardTitle className="text-black">Location Demographics</CardTitle>
+              </CardHeader>
+              <CardContent className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={locationData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label>
+                      {locationData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+            <Card className="border-2 border-gray-200">
+              <CardHeader>
+                <CardTitle className="text-black">Gender Demographics</CardTitle>
+              </CardHeader>
+              <CardContent className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={genderData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label>
+                      {genderData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
 
       {activeTab === "settings" && (
